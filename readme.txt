@@ -34,7 +34,7 @@ NOTA: Tagear la imagen de esa forma: dockerhub.local.com:5000/bsulvaran/nginx-pr
 
 
 ==== Configuracion en minikube (No es persistente el cambio)====
-
+vi /usr/lib/systemd/system/docker.service
 cambiar la ultima parte de la linea de abajo: provider=docker --insecure-registry dockerhub.local.com:5000:
 
 ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --default-ulimit=nofile=1048576:1048576 --tlsverify --tlscacert /etc/docker/ca.pem --tlscert /etc/docker/server.pem --tlskey /etc/docker/server-key.pem --label provider=docker --insecure-registry dockerhub.local.com:5000
