@@ -33,7 +33,7 @@ probar: docker push dockerhub.local.com:5000/bsulvaran/nginx-prueba
 NOTA: Tagear la imagen de esa forma: dockerhub.local.com:5000/bsulvaran/nginx-prueba
 
 
-==== Configuracion en minikube (No es persistente el cambio)====
+==== Configuracion en minikube, entra con minikube ssh (No es persistente el cambio)====
 vi /usr/lib/systemd/system/docker.service
 cambiar la ultima parte de la linea de abajo: provider=docker --insecure-registry dockerhub.local.com:5000:
 
@@ -41,5 +41,10 @@ ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock 
 
 En el /etc/hosts
 IP'docker-registry dockerhub.local.com
+
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
+
 
 Listo ahora se puede usar tu imagen en los yaml: dockerhub.local.com:5000/bsulvaran/nginx-prueba
